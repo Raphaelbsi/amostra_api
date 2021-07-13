@@ -6,7 +6,7 @@ let usuarioSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   created_at: { type: Date, default: Date.now },
-  updated_at: { type: Date, default: Date.now }
+  updated_at: { type: Date, default: Date.now },
 });
 
 usuarioSchema.pre("save", function (next) {
@@ -21,5 +21,12 @@ usuarioSchema.pre("save", function (next) {
     });
   }
 });
+
+usuarioSchema.methods.isCorrectPassword = function (password, callback) {
+  bcrypt.compare(password, this.password, function (err, same) {
+    if (err) callback(err);
+    else callback(err, same);
+  });
+};
 
 module.exports = mongoose.model("Usuario", usuarioSchema);
