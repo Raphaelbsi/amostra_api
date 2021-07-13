@@ -3,7 +3,7 @@ var path = require('path');
 var logger = require('morgan');
 require('./config/database');
 
-var usersRouter = require('./app/routes/users');
+var usuariosRouter = require('./app/routes/usuarios');
 
 var app = express();
 
@@ -12,6 +12,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/users', usersRouter);
+app.use('/usuarios', usuariosRouter);
 
 module.exports = app;

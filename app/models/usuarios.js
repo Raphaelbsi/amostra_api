@@ -3,10 +3,10 @@ const bcrypt = require("bcrypt");
 
 let usuarioSchema = new mongoose.Schema({
   nome: String,
-  email: { String, required: true, unique: true },
+  email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   created_at: { type: Date, default: Date.now },
-  updated_at: { type: Date, default: Date.now },
+  updated_at: { type: Date, default: Date.now }
 });
 
 usuarioSchema.pre("save", function (next) {
