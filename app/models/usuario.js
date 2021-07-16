@@ -5,6 +5,9 @@ let usuarioSchema = new mongoose.Schema({
   nome: String,
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
+  altura: Number,
+  idade: Number,
+  sexo: String,
   created_at: { type: Date, default: Date.now },
   updated_at: { type: Date, default: Date.now },
 });

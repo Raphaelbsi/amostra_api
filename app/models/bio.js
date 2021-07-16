@@ -12,8 +12,6 @@ let bioSchema = new mongoose.Schema({
     nivelGordura: String,
     nivelImc: String,
     nivelVisceral: String,
-    altura: Number,
-    idade: Number,
     created_at: { type: Date, default: Date.now },
     updated_at: { type: Date, default: Date.now },
     owner: {

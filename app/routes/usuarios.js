@@ -1,13 +1,13 @@
 var express = require("express");
 var router = express.Router();
-const Usuario = require("../models/usuarios");
+const Usuario = require("../models/usuario");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 const secret = process.env.JWT_TOKEN;
 
 router.post("/registrar", async (req, res) => {
-  const { nome, email, password } = req.body;
-  const usuario = new Usuario({ nome, email, password });
+  const { nome, email, password, altura, idade, sexo } = req.body;
+  const usuario = new Usuario({ nome, email, password, altura, idade, sexo });
 
   try {
     await usuario.save();
