@@ -103,9 +103,28 @@ router.put("/:id", withAuth, async (req, res) => {
     } else {
       res.status(403).json({ error: "Permissão negada!" });
     }
-    
   } catch (error) {
     res.status(500).json({ error: "Problema ao atualizar a Bio" });
   }
 });
+
+router.delete("/:id", withAuth, async (req, res) => {
+  const { id } = req.params;
+  try {
+    let bio = await Bio.findById(id);
+    console.log(id);
+    console.log("Estou aqui!!!");
+    
+    if (bio && isOwner(req.usuario, bio)) {
+      console.log("Entrei no if");
+      await bio.delete();
+      res.json({ message: "OK" }).status(204);
+    } else {
+      res.json({ error: "Proibido" }).status(403);
+    }
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
 module.exports = router;
