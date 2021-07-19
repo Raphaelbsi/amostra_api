@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 
 let bioSchema = new mongoose.Schema({
-    pesoCoporal: Number,
+    pesoCorporal: Number,
     percentGordura: Number,
     percentMusculo: Number,
     imc: Number,
